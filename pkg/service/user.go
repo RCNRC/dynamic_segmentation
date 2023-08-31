@@ -49,6 +49,9 @@ func (s *UserService) GetUsersCurrentSegments(userId int) ([]string, error) {
 
 func (s *UserService) GetUsersSegmentsHistory(dateFrom string, dateTo string) (string, error) {
 	fileName := fmt.Sprintf("%s:%s(%s).csv", dateFrom, dateTo, time.Now().Format("2006-01-02 15:04:05"))
+	if err := os.MkdirAll(reportsFilePath, 0770); err != nil {
+		return "", err
+	}
 	file, err := os.Create(reportsFilePath + "/" + fileName)
 	if err != nil {
 		return "", err

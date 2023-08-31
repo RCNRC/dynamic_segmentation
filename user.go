@@ -5,18 +5,12 @@ type User struct {
 }
 
 type UsersSegment struct {
-	User    User
-	Service string `json:"service"`
+	Service string `json:"slag"`
 	TTL     string `json:"ttl"`
 }
 
-type UserSegments struct {
-	User     User           `json:"user"`
-	Segments []UsersSegment `json:"segments"`
-}
-
 type UserUpdate struct {
-	User           User           `json:"user"`
+	UserId         int            `json:"id"`
 	SegmentsAdd    []UsersSegment `json:"segments_add"`
 	SegmentsDelete []UsersSegment `json:"segments_delete"`
 }

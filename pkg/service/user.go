@@ -28,7 +28,7 @@ func (s *UserService) Update(update dynamicsegmentation.UserUpdate) error {
 		if segmentId, err = s.repo.GetSegmentId(segment.Service); err != nil {
 			return err
 		}
-		if err = s.repo.AddSegmentRecord(update.User.Id, segmentId, segment.TTL, "i"); err != nil {
+		if err = s.repo.AddSegmentRecord(update.UserId, segmentId, segment.TTL, "i"); err != nil {
 			return err
 		}
 	}
@@ -36,7 +36,7 @@ func (s *UserService) Update(update dynamicsegmentation.UserUpdate) error {
 		if segmentId, err = s.repo.GetSegmentId(segment.Service); err != nil {
 			return err
 		}
-		if err = s.repo.AddSegmentRecord(update.User.Id, segmentId, segment.TTL, "d"); err != nil {
+		if err = s.repo.AddSegmentRecord(update.UserId, segmentId, segment.TTL, "d"); err != nil {
 			return err
 		}
 	}

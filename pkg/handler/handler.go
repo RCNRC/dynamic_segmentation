@@ -21,7 +21,7 @@ func (h *Handler) InitRoutes() *mux.Router {
 	serviceRouter.HandleFunc("/", h.deleteSegment).Methods("DELETE")
 
 	userRouter := r.PathPrefix("/user").Subrouter()
-	userRouter.HandleFunc("/update/", h.update).Methods("PUT")
+	userRouter.HandleFunc("/update/", h.update).Methods("POST")
 	userRouter.HandleFunc("/history/", h.history).Methods("GET")
 	userRouter.HandleFunc("/report/{fileName}", h.report).Methods("GET")
 	userRouter.HandleFunc("/current/", h.current).Methods("GET")

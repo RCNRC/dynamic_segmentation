@@ -22,13 +22,13 @@ func (h *Handler) createSegment(w http.ResponseWriter, r *http.Request) {
 	resp := make(map[string]string)
 	resp["success"] = "false"
 
-	if err = h.services.Segment.CreateSegment(segment.Title); err != nil {
+	if err = h.services.Segment.CreateSegment(segment.Slag); err != nil {
 		log.Fatalf("error while insrteing segment: %s", err.Error())
 		resp["error"] = "cannot create segment"
 		w.WriteHeader(http.StatusInternalServerError)
 	} else {
 		resp["success"] = "true"
-		resp["new_segment"] = segment.Title
+		resp["new_segment"] = segment.Slag
 	}
 	var jsonResp []byte
 	if jsonResp, err = json.Marshal(resp); err != nil {
@@ -57,13 +57,13 @@ func (h *Handler) deleteSegment(w http.ResponseWriter, r *http.Request) {
 	resp := make(map[string]string)
 	resp["success"] = "false"
 
-	if err = h.services.Segment.DeleteSegment(segment.Title); err != nil {
+	if err = h.services.Segment.DeleteSegment(segment.Slag); err != nil {
 		log.Fatalf("error while deleting segment: %s", err.Error())
 		resp["error"] = "cannot delete segment"
 		w.WriteHeader(http.StatusInternalServerError)
 	} else {
 		resp["success"] = "true"
-		resp["deleted_segment"] = segment.Title
+		resp["deleted_segment"] = segment.Slag
 	}
 	var jsonResp []byte
 	if jsonResp, err = json.Marshal(resp); err != nil {

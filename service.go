@@ -1,6 +1,6 @@
 package dynamicsegmentation
 
 type Segment struct {
-	Id    int
-	Title string `json:"title"`
+	Id   int
+	Slag string `json:"slag"`
 }

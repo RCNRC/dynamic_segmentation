@@ -137,14 +137,14 @@ func (h *Handler) current(w http.ResponseWriter, r *http.Request) {
 	}
 	var jsonResp []byte
 	if jsonResp, err = json.Marshal(struct {
-		Success  string                   `json:"success"`
-		Error    string                   `json:"error"`
-		User     dynamicsegmentation.User `json:"user"`
-		Segments []string                 `json:"segments"`
+		Success  string   `json:"success"`
+		Error    string   `json:"error"`
+		UserId   int      `json:"id"`
+		Segments []string `json:"segments"`
 	}{
 		Success:  resp_seccess,
 		Error:    resp_error,
-		User:     user,
+		UserId:   user.Id,
 		Segments: resp_segments,
 	}); err != nil {
 		log.Fatalf("error while marshalling segment: %s", err)

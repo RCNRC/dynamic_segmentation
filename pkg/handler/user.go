@@ -71,7 +71,7 @@ func (h *Handler) history(w http.ResponseWriter, r *http.Request) {
 
 	if fileNmae, err = h.services.User.GetUsersSegmentsHistory(dates.DateFrom, dates.DateTo); err != nil {
 		log.Fatalf("error while getting segments: %s", err.Error())
-		resp_error = "cannot update users segments"
+		resp_error = "cannot get users history"
 		w.WriteHeader(http.StatusInternalServerError)
 	} else {
 		resp_seccess = "true"
